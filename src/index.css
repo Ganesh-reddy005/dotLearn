@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+@theme {
+  /* Colors - Pure 2026 SaaS Palette */
+  --color-brand-blue: #2563EB;
+  --color-brand-cyan: #0891B2;
+  --color-brand-emerald: #10B981;
+  --color-brand-green: #34D399;
+  --color-brand-slate-50: #F8FAFC;
+
+  /* Typography */
+  --font-heading: "Space Grotesk", sans-serif;
+  --font-sans: "Inter", sans-serif;
+
+  /* Gradients - Essential for the "Copy-Paste" text effect */
+  --background-image-gradient-primary: linear-gradient(to right, #2563EB, #0891B2);
+  --background-image-gradient-success: linear-gradient(to right, #10B981, #34D399);
+
+  /* Utilities & Effects */
+  --tracking-tightest: -0.02em;
+  --shadow-premium: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+  --radius-premium: 2.5rem;
+}
+@theme {
+  --color-page-bg: #F8FAFC 
+}
+@layer base {
+  body {
+    @apply bg-white text-slate-900 antialiased font-sans;
+  }
+  
+  h1, h2, h3, h4 {
+    @apply font-heading tracking-tightest;
+  }
+}
+
+/* 1. Glassmorphism Core */
+.glass-card {
+  @apply bg-white/70 backdrop-blur-xl border border-white/20 shadow-sm transition-all duration-500;
+}
+
+/* 2. 3D Transforms for the Hero Code Editor */
+.perspective-1000 { 
+  perspective: 1000px; 
+}
+.rotate-y-neg-5 { 
+  transform: rotateY(-5deg); 
+}
+.rotate-x-5 { 
+  transform: rotateX(5deg); 
+}
+
+/* 3. Engineering Grid Pattern (Used in Features/Hero/Internship) */
+.bg-grid-slate-100 {
+  background-image: radial-gradient(circle, #e2e8f0 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+/* 4. Radial Fade Mask for Grids */
+.mask-radial-faded {
+  mask-image: radial-gradient(circle at center, black, transparent 80%);
+  -webkit-mask-image: radial-gradient(circle at center, black, transparent 80%);
+}
+
+/* 5. Animated Mesh for CTA Background */
+@keyframes mesh {
+  0% { transform: translate(0,0) scale(1); }
+  33% { transform: translate(30px, -50px) scale(1.1); }
+  66% { transform: translate(-20px, 20px) scale(0.9); }
+  100% { transform: translate(0,0) scale(1); }
+}
+.animate-mesh { 
+  animation: mesh 10s ease-in-out infinite; 
+}
+
+/* 6. Text Selection Style */
+::selection {
+  @apply bg-brand-blue/10 text-brand-blue;
+}
